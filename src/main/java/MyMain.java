@@ -7,7 +7,11 @@ public class MyMain {
     //     4
     //     2
     public static void printEvensBackwards(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
+        for (int x = 0; x < arr.length; x++) {
+            if(arr[x] % 2 == 1) {
+                System.out.println(arr[arr.length - 1 - x]);
+            }
+        }
         return;
     }
 
@@ -18,8 +22,14 @@ public class MyMain {
     //     isIncreasing([1, 1, 3, 6, 7]) => false (because 1 is not > 1)
     //     isIncreasing([1, 2, 3, 2, 4, 5, 8]) => false
     public static boolean isIncreasing(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
-        return false;
+        for (int x = 0; x < arr.length; x++) {
+            for (int y = x + 1; y < arr.length; y++) {
+                if (arr[x]>=arr[y]){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     // (Maybe Optional):
@@ -39,7 +49,13 @@ public class MyMain {
     // Ex: containsDuplicates([1, 2, 3, 2, 1]) => true
     //     containsDuplicates([7, 2, 3, 4, 1, 5]) => false
     public static boolean containsDuplicates(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
+        for (int x = 0; x < arr.length; x++) {
+            for (int y = x + 1; y < arr.length; y++) {
+                if (arr[x]==arr[y]){
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -47,8 +63,31 @@ public class MyMain {
     // Implement the bubble sort algorithm that we discussed in class
     // to sort our code
     // This algorithm returns the sorted array
+    public static boolean ordered(int[] arr) {
+        for (int x = 0; x < arr.length; x++) {
+            for (int y = x + 1; y < arr.length; y++) {
+                if (arr[x]>arr[y]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     public static int[] bubbleSort(int[] arr) {
-        // REPLACE THIS WITH YOUR CODE
+        int tempx = 0;
+        int tempy = 0;
+        while (ordered(arr)==false){
+            for (int x = 0; x < arr.length; x++) {
+                for (int y = x + 1; y < arr.length; y++) {
+                    if (arr[x]>arr[y]){
+                        tempx = arr[x];
+                        tempy = arr[y];
+                        arr[y] = tempx;
+                        arr[x] = tempy;
+                    }
+                }
+            }
+        }
         return arr;
     }
 
